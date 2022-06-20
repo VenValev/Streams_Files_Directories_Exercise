@@ -41,7 +41,7 @@
             }
         }
 
-        private static string Reverse(string line)
+        public static string Reverse(string line)
         {   //"@I was quick to judge him@ but it wasn't his fault@".Split()
             //["@I", "was", "quick", "to", "judge", "him@", "but", "it", "wasn't", "his", "fault@"].Reverse()
             //["fault@", "his", "wasn't", "it", "but", "him@", "judge", "to", "quick", "was", "@I"].Join(" ")
@@ -49,7 +49,7 @@
             return string.Join(" ", line.Split().Reverse());
         }
 
-        private static string Replace(string line) //върне реда със заместени символи
+        public static string Replace(string line) //върне реда със заместени символи
         {
             //-I was quick to judge him, but it wasn't his fault.
             //@I was quick to judge him@ but it wasn't his fault@
