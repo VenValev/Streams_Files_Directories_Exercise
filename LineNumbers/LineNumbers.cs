@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Text;
 
     public class LineNumbers
@@ -22,6 +23,11 @@
             foreach(string line in lines)
             {
                 count++;
+                
+                int letters = line.Count(char.IsLetter);
+                int symbols = line.Count(char.IsPunctuation);
+
+                string modifiedLine = $"Line {count}: {line} ({letters})({symbols})";
             }
         }
     }
