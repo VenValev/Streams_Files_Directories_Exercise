@@ -15,38 +15,49 @@
 
         public static void ProcessLines(string inputFilePath)
         {
+            //1. прочетем четните редовете
+            //2. заменим символите с @
+            //3. reverse words
+
             using (StreamReader reader = new StreamReader(inputFilePath))
             {
-                int count = -1;
-                string line = reader.ReadLine();
+                int counter = -1; //брой редовете
+                string line = reader.ReadLine(); //четем по 1 ред от файла
 
                 while (line != null)
                 {
-                    count++;
-                    if (count % 2 == 0)
+                    counter++;
+                    if (counter % 2 == 0)
                     {
-                        line = ReplaceLine(line);
-                        line = ReverseLine(line);
+                        //замяна
+                        line = Replace(line);
+                        //обърна в обратен ред
+                        line = Reverse(line);
                         Console.WriteLine(line);
                     }
-                    
+
                     line = reader.ReadLine();
                 }
             }
         }
 
-        private static string ReverseLine(string line)
-        {
+        private static string Reverse(string line)
+        {   //"@I was quick to judge him@ but it wasn't his fault@".Split()
+            //["@I", "was", "quick", "to", "judge", "him@", "but", "it", "wasn't", "his", "fault@"].Reverse()
+            //["fault@", "his", "wasn't", "it", "but", "him@", "judge", "to", "quick", "was", "@I"].Join(" ")
+            //"fault@ his wasn't it but him@ judge to quick was @I"
             return string.Join(" ", line.Split().Reverse());
         }
 
-        private static string ReplaceLine(string line)
+        private static string Replace(string line) //върне реда със заместени символи
         {
+            //-I was quick to judge him, but it wasn't his fault.
+            //@I was quick to judge him@ but it wasn't his fault@
             return line.Replace("-", "@")
-                .Replace(",", "@")
-                .Replace(".", "@")
-                .Replace("!", "@")
-                .Replace("?", "@");
+                 .Replace(",", "@")
+                 .Replace(".", "@")
+                 .Replace("!", "@")
+                 .Replace("?", "@");
         }
     }
 }
