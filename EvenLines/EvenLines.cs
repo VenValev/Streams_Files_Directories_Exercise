@@ -3,6 +3,7 @@
     using System;
     using System.IO;
     using System.Linq;
+    using System.Text;
 
     public class EvenLines
     {
@@ -10,14 +11,15 @@
         {
             string inputFilePath = @"..\..\..\text.txt";
 
-            ProcessLines(inputFilePath);
+            Console.WriteLine(ProcessLines(inputFilePath));
         }
 
-        public static void ProcessLines(string inputFilePath)
+        public static string ProcessLines(string inputFilePath)
         {
             //1. прочетем четните редовете
             //2. заменим символите с @
             //3. reverse words
+            StringBuilder s = new StringBuilder();
 
             using (StreamReader reader = new StreamReader(inputFilePath))
             {
@@ -33,12 +35,14 @@
                         line = Replace(line);
                         //обърна в обратен ред
                         line = Reverse(line);
-                        Console.WriteLine(line);
+                        //Console.WriteLine(line);
+                        s.AppendLine(line);
                     }
 
                     line = reader.ReadLine();
                 }
             }
+            return s.ToString();
         }
 
         public static string Reverse(string line)
