@@ -1,6 +1,8 @@
 ﻿namespace LineNumbers
 {
     using System;
+    using System.IO;
+
     public class LineNumbers
     {
         static void Main()
@@ -13,7 +15,16 @@
 
         public static void ProcessLines(string inputFilePath, string outputFilePath)
         {
-            throw new NotImplementedException();
+            using (StreamReader reader = new StreamReader(inputFilePath))
+            {
+                string line = reader.ReadLine();
+                while(line != null)
+                {
+
+
+                    line = reader.ReadLine();
+                }
+            }
         }
     }
 }
