@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Text;
 
     public class LineNumbers
     {
@@ -15,15 +16,12 @@
 
         public static void ProcessLines(string inputFilePath, string outputFilePath)
         {
-            using (StreamReader reader = new StreamReader(inputFilePath))
+            string[] lines = File.ReadAllLines(inputFilePath);
+            int count = 0;
+
+            foreach(string line in lines)
             {
-                string line = reader.ReadLine();
-                while(line != null)
-                {
-
-
-                    line = reader.ReadLine();
-                }
+                count++;
             }
         }
     }
