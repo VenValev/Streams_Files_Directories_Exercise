@@ -17,18 +17,19 @@
         {
             using (StreamReader reader = new StreamReader(inputFilePath))
             {
-                int count = 0;
+                int count = -1;
                 string line = reader.ReadLine();
 
                 while (line != null)
                 {
+                    count++;
                     if (count % 2 == 0)
                     {
                         line = ReplaceLine(line);
                         line = ReverseLine(line);
                         Console.WriteLine(line);
                     }
-                    count++;
+                    
                     line = reader.ReadLine();
                 }
             }
