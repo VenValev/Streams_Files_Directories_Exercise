@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
 
     public class DirectoryTraversal
     {
@@ -33,6 +34,10 @@
                 }
                 extensionInfo[extension].Add(fileInfo);
             }
+
+            extensionInfo.OrderByDescending(entry => entry.Value.Count).ThenBy(entry => entry.Key);
+
+
             return "";
         }
 
