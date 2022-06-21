@@ -21,7 +21,7 @@
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
         {
-            throw new NotImplementedException();
+            string pathReport = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
         }
     }
 }
