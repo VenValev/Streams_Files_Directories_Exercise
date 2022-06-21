@@ -15,13 +15,20 @@
 
         public static void CopyAllFiles(string inputPath, string outputPath)
         {
+            if (Directory.Exists(outputPath))
+            {
+                Directory.Delete(outputPath, true);
+            }
+
             Directory.CreateDirectory(outputPath);
 
             string[] files = Directory.GetFiles(inputPath);
 
             foreach(string file in files)
             {
-
+                var fileName = Path.GetFileName(file); 
+                var copyDestination = Path.Combine(outputPath, fileName);
+                File.Copy(fileName, copyDestination);
             }
 
         }
