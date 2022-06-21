@@ -40,6 +40,11 @@
                 string extension = entry.Key;
                 List<FileInfo> filesInfo = entry.Value;
                 filesInfo.OrderByDescending(file => file.Length);
+
+                foreach(FileInfo fileInfo in filesInfo)
+                {
+                    Console.WriteLine($"--{fileInfo.Name} - {fileInfo.Length / 1024:f3}kb");
+                }
             }
 
 
