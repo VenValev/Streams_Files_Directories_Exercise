@@ -22,8 +22,10 @@
 
             foreach(var file in files)
             {
-
+                FileInfo fileInfo = new FileInfo(file);
+                string extension = fileInfo.Extension;
             }
+            return "";
         }
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
