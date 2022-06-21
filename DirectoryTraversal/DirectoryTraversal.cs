@@ -51,7 +51,7 @@
             }
 
 
-            return s;
+            return s.ToString();
         }
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
