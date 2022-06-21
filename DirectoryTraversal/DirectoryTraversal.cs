@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Text;
 
     public class DirectoryTraversal
     {
@@ -22,6 +23,7 @@
         {
             string[] files = Directory.GetFiles(inputFolderPath);
             Dictionary<string, List<FileInfo>> extensionInfo = new Dictionary<string, List<FileInfo>>();
+            StringBuilder s = new StringBuilder();
 
             foreach(var file in files)
             {
@@ -43,12 +45,13 @@
 
                 foreach(FileInfo fileInfo in filesInfo)
                 {
-                    Console.WriteLine($"--{fileInfo.Name} - {fileInfo.Length / 1024:f3}kb");
+                    //Console.WriteLine($"--{fileInfo.Name} - {fileInfo.Length / 1024:f3}kb");
+                    s.AppendLine($"--{fileInfo.Name} - {fileInfo.Length / 1024:f3}kb");
                 }
             }
 
 
-            return "";
+            return s;
         }
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
