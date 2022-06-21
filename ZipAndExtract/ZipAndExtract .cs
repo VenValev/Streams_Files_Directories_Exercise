@@ -20,7 +20,7 @@
 
         public static void ZipFileToArchive(string inputFilePath, string zipArchiveFilePath)
         {
-            using (var archive = ZipFile.Open(zipArchiveFilePath, ZipArchiveMode.Create))
+            using (ZipArchive archive = ZipFile.Open(zipArchiveFilePath, ZipArchiveMode.Create))
             {
                 //1. взимаме файла, който ще zip-ваме
                 string fileName = Path.GetFileName(inputFilePath);
