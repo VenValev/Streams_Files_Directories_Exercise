@@ -1,6 +1,7 @@
 ﻿namespace DirectoryTraversal
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
 
     public class DirectoryTraversal
@@ -19,11 +20,18 @@
         public static string TraverseDirectory(string inputFolderPath)
         {
             string[] files = Directory.GetFiles(inputFolderPath);
+            Dictionary<string, List<FileInfo>> extensionInfo = new Dictionary<string, List<FileInfo>>();
 
             foreach(var file in files)
             {
                 FileInfo fileInfo = new FileInfo(file);
                 string extension = fileInfo.Extension;
+
+                if(!extensionInfo.ContainsKey(extension))
+                {
+                    extensionInfo.Add(extension, new List<FileInfo>());
+                }
+                extensionInfo[extension].Add(fileInfo);
             }
             return "";
         }
