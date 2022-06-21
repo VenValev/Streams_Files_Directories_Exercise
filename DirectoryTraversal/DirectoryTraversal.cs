@@ -35,7 +35,12 @@
                 extensionInfo[extension].Add(fileInfo);
             }
 
-            extensionInfo.OrderByDescending(entry => entry.Value.Count).ThenBy(entry => entry.Key);
+            foreach(var entry in extensionInfo.OrderByDescending(entry => entry.Value.Count).ThenBy(entry => entry.Key))
+            {
+                string extension = entry.Key;
+                List<FileInfo> filesInfo = entry.Value;
+                filesInfo.OrderByDescending(file => file.Length);
+            }
 
 
             return "";
