@@ -1,6 +1,8 @@
 ﻿namespace DirectoryTraversal
 {
     using System;
+    using System.IO;
+
     public class DirectoryTraversal
     {
         static void Main()
@@ -16,12 +18,18 @@
 
         public static string TraverseDirectory(string inputFolderPath)
         {
-            throw new NotImplementedException();
+            string[] files = Directory.GetFiles(inputFolderPath);
+
+            foreach(var file in files)
+            {
+
+            }
         }
 
         public static void WriteReportToDesktop(string textContent, string reportFileName)
         {
-            string pathReport = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string pathReport = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + reportFileName;
+            File.WriteAllText(pathReport, textContent);
         }
     }
 }
